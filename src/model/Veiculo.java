@@ -2,9 +2,9 @@ package model;
 
 public class Veiculo {
 
-	private String placa, Cor;
+	private String placa;
+	private String cor;
 
- Veiculo veiculo = new Veiculo();
 	public String getPlaca() {
 		return placa;
 	}
@@ -14,18 +14,11 @@ public class Veiculo {
 	}
 
 	public String getCor() {
-		return Cor;
+		return cor;
 	}
 
 	public void setCor(String cor) {
-		Cor = cor;
+		this.cor = cor;
 	}
 
-	public void RegistrarVeiculo() {
-	System.out.println("informe a cor do veiculo:");
-	veiculo.setCor(Cor);
-	System.out.println("Informe a placa do veiculo:");
-	veiculo.setPlaca(placa);
-	
-	}
 }

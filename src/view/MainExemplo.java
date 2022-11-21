@@ -3,8 +3,8 @@ package view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import control.PessoaDAO;
 import model.Pessoa;
-import model.PessoaDAO;
 
 public class MainExemplo {
 

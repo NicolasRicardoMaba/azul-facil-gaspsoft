@@ -1,6 +1,5 @@
 package model;
 
-public class Moto extends Veiculo{
+public class Moto extends Veiculo {
 
-	
 }
