@@ -23,10 +23,11 @@ public class MainExemplo {
 			 */
 			System.out.println("- MENU EXEMPLO -");
 			System.out.println("0 SAIR");
-			System.out.println("1 CADASTRAR");
-			System.out.println("2 ALTERAR");
-			System.out.println("3 EXCLUIR");
-			System.out.println("4 LISTAR");
+			System.out.println("1 CADASTRAR CLIENTE");
+			System.out.println("2 ALTERAR CLIENTE ");
+			System.out.println("3 EXCLUIR CLIENTE");
+			System.out.println("4 LISTAR CLIENTES");
+			System.out.println("5 RESERVAR VAGA ESTACIONAMENTO");
 			opcaoSelecionada = Integer.valueOf(leitura.nextLine());
 
 			switch (opcaoSelecionada) {
@@ -71,7 +72,10 @@ public class MainExemplo {
 					System.out.println("Nome: " + pessoa.getNome());
 				}
 			}
-
+			case 5: {
+				// TODO 
+			}
+//reserva da vaga alterar esquema//
 			}
 
 		}
