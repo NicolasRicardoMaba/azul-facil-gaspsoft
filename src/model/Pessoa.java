@@ -29,5 +29,5 @@ public class Pessoa {
 	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
-
+	
 }
