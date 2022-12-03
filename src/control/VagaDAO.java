@@ -12,7 +12,7 @@ public class VagaDAO {
 		if (instancia == null) {
 			instancia = new VagaDAO();
 			vagas = new ArrayList<>();
-			
+			//perguntar a professora
 		}
 
 		return instancia;
