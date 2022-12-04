@@ -163,8 +163,12 @@ public class MainExemplo {
 					break;
 				}
 				case 1: {
-					System.out.println("");
-				}
+					System.out.println("Digite o novo nome desejado:");
+					p.setNome(leitura.nextLine());
+					String nome =p.getNome();
+					
+					bancoPessoa.set(0, nome);
+				}	
 			}}
 			case 3: {
 				System.out.println("Digite o cpf da pessoa que deseja excluir:");
