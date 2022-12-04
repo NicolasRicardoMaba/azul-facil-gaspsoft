@@ -17,4 +17,6 @@ public class Veiculo  {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
+
+
 }

@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 import control.PessoaDAO;
 import model.Pessoa;
+import model.Veiculo;
 
 public class MainExemplo {
 
 	public static void main(String[] args) {
-
+		PessoaDAO p = new PessoaDAO.getInstancia();//olhar exemplo
+		Veiculo veiculo = new Veiculo();
 		Integer opcaoSelecionada = Integer.MAX_VALUE;
 		Scanner leitura = new Scanner(System.in);
 		PessoaDAO bancoPessoa = PessoaDAO.getInstancia();
@@ -38,23 +40,57 @@ public class MainExemplo {
 				Pessoa p = new Pessoa();
 				System.out.println("Nome:");
 				String nome = leitura.nextLine();
-				// fazer validacao
+			
 				System.out.println("Cpf:");
 				String cpf = leitura.nextLine();
-				// fazer validacao
+				System.out.println("Idade:");
+				Integer idade = Integer.valueOf(leitura.nextLine());
+				System.out.println("Telefone:");
+				Integer telefone = Integer.valueOf(leitura.nextLine());
+				//fazer validações
+				
+				if (nome != null) {
 				p.setNome(nome);
-
-				/**
-				 * Exemplo de validacao
-				 * 
-				 */
+				}
+				else { 
+					 
+						System.out.println("Erro nome inválido!");
+					break;
+			}
 				if (!cpf.isEmpty()) {
 					p.setCpf(Long.valueOf(cpf));
 				} else {
 					System.out.println("Erro");
+				break;
+				}
+				if (idade >0 && idade<18) {
+					System.out.println("menor de idade, não é possível cadastrar seu veículo");
+					System.out.println("Recomenda-se Denunciar");
+					break;
+				}
+					else if(idade<=0){
+						System.out.println("Idade Inválida!");
+						break;
+					}
+					else {
+						p.setIdade(idade);
+					}
 				}
 
 				bancoPessoa.inserir(p);
+				
+				System.out.println("/////////////////////////////////////////////");
+				System.out.println("Informe a placa do veiculo:");
+				veiculo.setPlaca(leitura.nextLine());
+	
+				System.out.println("O veículo que usará a vaga é uma moto ou carro?");
+				System.out.println("1=moto");
+				System.out.println("2=carro");
+				
+				int ve = 0;
+				if ( ve == 1) {
+					
+				}
 
 			}
 			case 2: {
