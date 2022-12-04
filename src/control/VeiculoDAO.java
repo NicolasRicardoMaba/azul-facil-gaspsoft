@@ -7,7 +7,7 @@ import model.Veiculo;
 public class VeiculoDAO {
    
    
-    public static ArrayList<Veiculo> listaveiculo = new ArrayList();
+    public ArrayList<Veiculo> listaveiculo = new ArrayList();
    
     	}
     

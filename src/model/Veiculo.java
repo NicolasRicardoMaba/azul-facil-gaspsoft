@@ -2,6 +2,15 @@ package model;
 public class Veiculo  {
 	private String placa;
 	private String cor;
+	private String tipo;
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public String getPlaca() {
 		return placa;
 	}

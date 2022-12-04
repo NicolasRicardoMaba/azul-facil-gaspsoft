@@ -1,12 +1,15 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model.IPessoaDAO;
 import model.Pessoa;
 
 public class PessoaDAO implements IPessoaDAO {
-
+	
+	Pessoa p = new Pessoa();
+	Scanner leitura = new Scanner(System.in);
 	private static ArrayList<Pessoa> tabelaPessoas;
 	private static PessoaDAO instancia;
 
@@ -48,7 +51,6 @@ public class PessoaDAO implements IPessoaDAO {
 		for (Pessoa pessoa : tabelaPessoas) {
 
 			if (pessoa.getCpf() == cpf) {
-				pessoa.setNome(p.getNome());
 				return true;
 			}
 		}
@@ -69,7 +71,12 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public ArrayList<Pessoa> listarPessoas() {
-		return tabelaPessoas;
+		return tabelaPessoas +  listaveiculo;
+	}
+	
+
+		
+
 	}
 
-}
+	
