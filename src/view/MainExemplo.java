@@ -3,7 +3,10 @@ package view;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import control.PessoaDAO;
+import control.VagaDAO;
 import control.VeiculoDAO;
 import model.Carro;
 import model.Moto;
@@ -13,6 +16,7 @@ import model.Veiculo;
 public class MainExemplo {
 
 	public static void main(String[] args) {
+		VagaDAO vaga = new VagaDAO();
 		Carro c = new Carro();
 		Moto m = new Moto();
 		Pessoa p = new Pessoa();
@@ -46,7 +50,7 @@ public class MainExemplo {
 			}
 			case 1: {
 				Pessoa addPessoa = new Pessoa();
-				
+				addPessoa.setVagaAssociada(null);
 				System.out.println("Nome:");
 				String nome = leitura.nextLine();
 
@@ -97,8 +101,9 @@ public class MainExemplo {
 				System.out.println("O veículo que usará a vaga é uma moto ou carro?");
 				System.out.println("1=moto");
 				System.out.println("2=carro");
-				int ve = Integer.valueOf(leitura.nextLine());
-				if (ve == 1) {
+				 veiculo.setVe (Integer.valueOf(leitura.nextLine()));
+				if (veiculo.getVe() == 1) {
+					m.setVe(1);
 					m.setTipo("Moto");
 					System.out.println("Informe a placa da moto:");
 					m.setPlaca(leitura.nextLine());
@@ -110,14 +115,16 @@ public class MainExemplo {
 					m.setQuantcelindradas(Integer.valueOf(leitura.nextLine()));
 					System.out.println("Insira a marca da moto:");
 					m.setMarca(leitura.nextLine());
-					
+					System.out.println("Insira a cor da moto");
+					m.setCor(leitura.nextLine());
 					addPessoa.setMoto(m);
 				
 				veiculod.listaveiculo.add(m);
 
 				}
-				else if (ve == 2) {
-					veiculo.setTipo("Carro");
+				else if (veiculo.getVe() == 2) {
+					c.setVe(2);
+					c.setTipo("Carro");
 					System.out.println("Informe a placa do carro:");
 					c.setPlaca(leitura.nextLine());
 
@@ -128,7 +135,8 @@ public class MainExemplo {
 					c.setQuantvalvulas(Integer.valueOf(leitura.nextLine()));
 					System.out.println("Insira a marca do carro:");
 					c.setMarca(leitura.nextLine());
-					
+					System.out.println("Insira a cor do carro");
+					c.setCor(leitura.nextLine());
 					addPessoa.setCarro(c);
 				
 				veiculod.listaveiculo.add(c);
@@ -157,17 +165,7 @@ public class MainExemplo {
 				System.out.println("2-CPF");
 				System.out.println("3-IDADE");
 				System.out.println("4-TELEFONE");
-				if (p.getMoto().equals(null))		{		
-					
-			/*		System.out.println("- DADOS DO VEICULO -");
-				System.out.println("-"+ p.getCarro().getTipo());
-				System.out.println("MARCA:"+p.getCarro().getMarca());
-				System.out.println("MODELO:"+ p.getCarro().getModelodocarro());
-				System.out.println("PLACA:"+p.getCarro().getPlaca());
-				System.out.println("VALVULAS:"+p.getCarro().getQuantvalvulas());
-				System.out.println("COR:"+p.getCarro().getCor());*/
-
-				}
+			
 				System.out.println("\n 0-SAIR");
 				opcaoSelecionada = Integer.valueOf(leitura.nextLine());
 				
@@ -206,22 +204,214 @@ public class MainExemplo {
 				}
 			}
 			break;
+			
+			
 			case 3: {
+				
+				System.out.println("DIGITE O CPF DO DONO DO VEICULO:");
+				long cpf = Long.valueOf(leitura.nextLine());
+				
+				p = bancoPessoa.getPessoaByCpf(cpf);
+				int index = bancoPessoa.getIndex(p);
+				
+				//bancoPessoa.alterar(p, cpf);
+				
+			
+				if (p.getMoto().equals(null))		{		
+					
+					System.out.println("- DADOS DO VEICULO -");
+				System.out.println("-"+ p.getCarro().getTipo());
+				System.out.println("MARCA:"+p.getCarro().getMarca());
+				System.out.println("MODELO:"+ p.getCarro().getModelodocarro());
+				System.out.println("PLACA:"+p.getCarro().getPlaca());
+				System.out.println("VALVULAS:"+p.getCarro().getQuantvalvulas());
+				System.out.println("COR:"+p.getCarro().getCor());
+				
+					System.out.println("- OQUE DESEJA ALTERAR? -");
+		
+				System.out.println("1-MARCA:");
+				System.out.println("2-MODELO:");
+				System.out.println("3-PLACA:");
+				System.out.println("4-VALVULAS:");
+				System.out.println("5-COR:");
+				
+				System.out.println("\n 0-SAIR");
+				opcaoSelecionada = Integer.valueOf(leitura.nextLine());
+				
+				switch (opcaoSelecionada) {
+				case 0: {
+					break;
+				}
+				case 1: {
+					System.out.println("PARA QUAL MARCA DESEJA ALTERAR?");
+					p.getCarro().setMarca(leitura.nextLine());
+	
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				case 2: {
+					System.out.println("PARA QUAL MODELO DESEJA ALTERAR?");
+					p.getCarro().setModelodocarro(leitura.nextLine());
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				case 3: {
+					System.out.println("PARA QUANTAS VALVULAS DESEJA ALTERAR?");
+					p.getCarro().setQuantvalvulas(Integer.valueOf(leitura.nextLine()));
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				case 4: {
+					System.out.println("PARA QUAL COR DESEJA ALTERAR?");
+					p.getCarro().setCor(leitura.nextLine());
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				}
+			}
+			
+			else  {					
+				System.out.println("- DADOS DO VEICULO -");
+			System.out.println("-"+ p.getMoto().getTipo());
+			System.out.println("MARCA:"+p.getMoto().getMarca());
+			System.out.println("MODELO:"+ p.getMoto().getModelomoto());
+			System.out.println("PLACA:"+p.getMoto().getPlaca());
+			System.out.println("VALVULAS:"+p.getMoto().getQuantcelindradas());
+			System.out.println("COR:"+p.getMoto().getCor());
+			
+				System.out.println("- OQUE DESEJA ALTERAR? -");
+	
+			System.out.println("1-MARCA:");
+			System.out.println("2-MODELO:");
+			System.out.println("3-PLACA:");
+			System.out.println("4-CELINDRADAS:");
+			System.out.println("5-COR:");
+			
+			System.out.println("\n 0-SAIR");
+			opcaoSelecionada = Integer.valueOf(leitura.nextLine());
+			
+			switch (opcaoSelecionada) {
+			case 0: {
+				break;
+			}
+			case 1: {
+				System.out.println("PARA QUAL MARCA DESEJA ALTERAR?");
+				p.getMoto().setMarca(leitura.nextLine());
+
+				bancoPessoa.getTabelaPessoas().set(index, p);
+			}	
+			break;
+			case 2: {
+				System.out.println("PARA QUAL MODELO DESEJA ALTERAR?");
+				p.getMoto().setModelomoto(leitura.nextLine());
+
+				bancoPessoa.getTabelaPessoas().set(index, p);
+			}	
+			break;
+			case 3: {
+				System.out.println("PARA QUANTAS VALVULAS DESEJA ALTERAR?");
+				p.getMoto().setQuantcelindradas(Integer.valueOf(leitura.nextLine()));
+
+				bancoPessoa.getTabelaPessoas().set(index, p);
+			}	
+			break;
+			case 4: {
+				System.out.println("PARA QUAL COR DESEJA ALTERAR?");
+				p.getMoto().setCor(leitura.nextLine());
+
+				bancoPessoa.getTabelaPessoas().set(index, p);
+			}	
+			break;
+			}
+		}
+				
+			}
+			break;
+			
+			
+			case 4: {
 				System.out.println("Digite o cpf da pessoa que deseja excluir:");
 				Long cpf = Long.valueOf(leitura.nextLine());
 				
 				bancoPessoa.excluir(p, cpf);
 			}
 			break;
-			case 4: {
+			case 5: {
 				ArrayList<Pessoa> lista = bancoPessoa.listarPessoas();
 				for (Pessoa pessoa : lista) {
 					System.out.println("Cpf: " + pessoa.getCpf());
 					System.out.println("Nome: " + pessoa.getNome());
+					System.out.println("Idade:"+ pessoa.getIdade());
+					System.out.println("Telefone"+ pessoa.getTelefone());
+				//valor de ve sai como nulo	
+				if (p.getMoto().getVe() == 1)		{		
+					System.out.println("-"+ p.getMoto().getTipo());
+					System.out.println("Marca:"+p.getMoto().getMarca());
+					System.out.println("Modelo:"+ p.getMoto().getModelomoto());
+					System.out.println("Placa:"+p.getMoto().getPlaca());
+					System.out.println("Valvulas:"+p.getMoto().getQuantcelindradas());
+					System.out.println("Cor:"+p.getMoto().getCor());
+					if(p.getVagaAssociada()== null) {
+					System.out.println("Vaga:Sem Vaga associada.");
+					}
+					else if (p.getVagaAssociada()!=null) {
+					System.out.println("Sua vaga é:"+p.getVagaAssociada());
+					}
+				}
+				else if (p.getMoto().getVe() == null)	{
+					System.out.println("-"+ p.getCarro().getTipo());
+					System.out.println("Marca:"+p.getCarro().getMarca());
+					System.out.println("Modelo:"+ p.getCarro().getModelodocarro());
+					System.out.println("Placa:"+p.getCarro().getPlaca());
+					System.out.println("Valvulas:"+p.getCarro().getQuantvalvulas());
+					System.out.println("Cor:"+p.getCarro().getCor());
+				}
+
+				
 				}
 			}
 			break;
-			case 5: {
+			case 6: {
+				System.out.println("**APÓS TER FEITO SEU CADASTRO DIGITE SEU CPF PARA QUE SEJA POSSIVEL RESERVARMOS UMA VAGA:**");
+				System.out.println("DIGITE SEU CPF:");
+				long cpf = Long.valueOf(leitura.nextLine());
+				
+				p = bancoPessoa.getPessoaByCpf(cpf);
+				int index = bancoPessoa.getIndex(p);
+				if(p!=null) {
+					System.out.println("**MUITO BEM!**");
+					System.out.println("----VAGAS:----");
+				System.out.println("1");
+				System.out.println("2");
+				System.out.println("3");
+				System.out.println("4");
+				System.out.println("5");
+				System.out.println("6");
+				System.out.println("7");
+				System.out.println("8");
+				System.out.println("9");
+				System.out.println("10");
+				Integer indexvaga = Integer.valueOf(leitura.nextLine());
+			if (vaga.validaVaga(indexvaga) == true) {
+			vaga.cadastrarVaga(indexvaga);
+			p.setVagaAssociada(indexvaga);
+			System.out.println("**MUITO BEM**");
+			System.out.println("O número da sua vaga é:"+p.getVagaAssociada());
+				
+				 }else if (vaga.validaVaga(indexvaga) == false)
+				 {
+					 System.out.println("Desculpe, esta vaga está ocupada.");
+					 System.out.println("Tente outra!");
+				 }
+				 else {
+					 System.out.println("Desculpe, o sistema não reconhece o dado inserido.");
+					 System.out.println("Tente outra vez!");
+				 }
+				
+				}
 				//Digite o numero da sua vaga
 				//verifica
 				//insere ou informa erro

@@ -8,9 +8,18 @@ public class Pessoa {
 	private Long telefone;
 	private Carro carro;
 	private Moto moto;
-	
+	private Integer vagaAssociada;
+
 	public Carro getCarro() {
 		return carro;
+	}
+
+	public Integer getVagaAssociada() {
+		return vagaAssociada;
+	}
+
+	public void setVagaAssociada(Integer vagaAssociada) {
+		this.vagaAssociada = vagaAssociada;
 	}
 
 	public void setCarro(Carro carro) {
@@ -64,5 +73,7 @@ public class Pessoa {
 	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
+
+
 	
 }

@@ -3,8 +3,19 @@ public class Veiculo  {
 	private String placa;
 	private String cor;
 	private String tipo;
+	private	Integer ve;
+
 	public String getTipo() {
+
 		return tipo;
+	}
+
+	public Integer getVe() {
+		return ve;
+	}
+
+	public void setVe(Integer ve) {
+		this.ve = ve;
 	}
 
 	public void setTipo(String tipo) {
