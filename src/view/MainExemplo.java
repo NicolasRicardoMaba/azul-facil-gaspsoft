@@ -32,10 +32,12 @@ public class MainExemplo {
 			System.out.println("- VAGAS AZULFÁCIL -");
 			System.out.println("0 SAIR");
 			System.out.println("1 CADASTRAR CLIENTE");
-			System.out.println("2 ALTERAR CLIENTE ");
-			System.out.println("3 EXCLUIR CLIENTE");
-			System.out.println("4 LISTAR CLIENTES");
-			System.out.println("5 RESERVAR VAGA ESTACIONAMENTO");
+			System.out.println("2 ALTERAR DADOS DO CLIENTE ");
+			System.out.println("3 ALTERAR DADOS DO VEICULO");
+			System.out.println("4 EXCLUIR CADASTRO");
+			System.out.println("5 LISTAR CADASTROS");
+			System.out.println("6 RESERVAR VAGA ESTACIONAMENTO");
+
 			opcaoSelecionada = Integer.valueOf(leitura.nextLine());
 
 			switch (opcaoSelecionada) {
@@ -43,6 +45,8 @@ public class MainExemplo {
 				break;
 			}
 			case 1: {
+				Pessoa addPessoa = new Pessoa();
+				
 				System.out.println("Nome:");
 				String nome = leitura.nextLine();
 
@@ -55,14 +59,14 @@ public class MainExemplo {
 				// fazer validações
 
 				if (nome != null) {
-					p.setNome(nome);
+					addPessoa.setNome(nome);
 				} else {
 
 					System.out.println("Erro nome inválido!");
 					break;
 				}
 				if (!cpf.isEmpty()) {
-					p.setCpf(Long.valueOf(cpf));
+					addPessoa.setCpf(Long.valueOf(cpf));
 				} else {
 					System.out.println("Erro");
 					break;
@@ -75,17 +79,17 @@ public class MainExemplo {
 					System.out.println("Idade Inválida!");
 					break;
 				} else  {
-					p.setIdade(idade);
+					addPessoa.setIdade(idade);
 				}
 				if (!telefone.isEmpty()) {
-					p.setTelefone(Long.valueOf(telefone));
+					addPessoa.setTelefone(Long.valueOf(telefone));
 
 				} else {
 					System.out.println("Telefone inválido");
 					break;
 				}
 
-				bancoPessoa.inserir(p);
+				bancoPessoa.inserir(addPessoa);
 
 				System.out.println("/////////////////////////////////////////////");
 	
@@ -106,6 +110,8 @@ public class MainExemplo {
 					m.setQuantcelindradas(Integer.valueOf(leitura.nextLine()));
 					System.out.println("Insira a marca da moto:");
 					m.setMarca(leitura.nextLine());
+					
+					addPessoa.setMoto(m);
 				
 				veiculod.listaveiculo.add(m);
 
@@ -122,11 +128,11 @@ public class MainExemplo {
 					c.setQuantvalvulas(Integer.valueOf(leitura.nextLine()));
 					System.out.println("Insira a marca do carro:");
 					c.setMarca(leitura.nextLine());
+					
+					addPessoa.setCarro(c);
 				
 				veiculod.listaveiculo.add(c);
 				}
-
-			
 			}
 			break;
 			case 2: {
@@ -134,7 +140,10 @@ public class MainExemplo {
 				System.out.println("Digite o cpf da pessoa que deseja alterar:");
 				long cpf = Long.valueOf(leitura.nextLine());
 				
-			bancoPessoa.alterar(p, cpf);
+				p = bancoPessoa.getPessoaByCpf(cpf);
+				int index = bancoPessoa.getIndex(p);
+				
+				//bancoPessoa.alterar(p, cpf);
 				
 				System.out.println("- DADOS ATUAIS -");
 				System.out.println("Nome:"+ p.getNome());
@@ -142,22 +151,26 @@ public class MainExemplo {
 				System.out.println("Idade:"+p.getIdade());
 				System.out.println("Telefone:"+p.getTelefone());
 				
-					System.out.println("- DADOS DO AUTOMÓVEL -");
-					System.out.println("Nome:"+ p.getNome());
-					System.out.println("Cpf:"+p.getCpf());
-					System.out.println("Idade:"+p.getIdade());
-					System.out.println("Telefone:"+p.getTelefone());
-					
 				
-				System.out.println("- Oque deseja alterar? -");
+				System.out.println("- OQUE DESEJA ALTERAR? -");
 				System.out.println("1-NOME:");
 				System.out.println("2-CPF");
 				System.out.println("3-IDADE");
 				System.out.println("4-TELEFONE");
-				
+				if (p.getMoto().equals(null))		{		
+					
+			/*		System.out.println("- DADOS DO VEICULO -");
+				System.out.println("-"+ p.getCarro().getTipo());
+				System.out.println("MARCA:"+p.getCarro().getMarca());
+				System.out.println("MODELO:"+ p.getCarro().getModelodocarro());
+				System.out.println("PLACA:"+p.getCarro().getPlaca());
+				System.out.println("VALVULAS:"+p.getCarro().getQuantvalvulas());
+				System.out.println("COR:"+p.getCarro().getCor());*/
+
+				}
 				System.out.println("\n 0-SAIR");
 				opcaoSelecionada = Integer.valueOf(leitura.nextLine());
-
+				
 				switch (opcaoSelecionada) {
 				case 0: {
 					break;
@@ -165,15 +178,41 @@ public class MainExemplo {
 				case 1: {
 					System.out.println("Digite o novo nome desejado:");
 					p.setNome(leitura.nextLine());
-					String nome =p.getNome();
-					
-					bancoPessoa.set(0, nome);
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
-			}}
+				break;
+				case 2: {
+					System.out.println("Digite o novo cpf desejado:");
+					p.setCpf(Long.valueOf(leitura.nextLine()));
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				case 3: {
+					System.out.println("Digite o novo nome desejado:");
+					p.setIdade(Integer.valueOf(leitura.nextLine()));
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				case 4: {
+					System.out.println("Digite o novo nome desejado:");
+					p.setTelefone(Long.valueOf(leitura.nextLine()));
+
+					bancoPessoa.getTabelaPessoas().set(index, p);
+				}	
+				break;
+				}
+			}
+			break;
 			case 3: {
 				System.out.println("Digite o cpf da pessoa que deseja excluir:");
-				// finalizar codigo
+				Long cpf = Long.valueOf(leitura.nextLine());
+				
+				bancoPessoa.excluir(p, cpf);
 			}
+			break;
 			case 4: {
 				ArrayList<Pessoa> lista = bancoPessoa.listarPessoas();
 				for (Pessoa pessoa : lista) {
@@ -181,11 +220,29 @@ public class MainExemplo {
 					System.out.println("Nome: " + pessoa.getNome());
 				}
 			}
+			break;
 			case 5: {
+				//Digite o numero da sua vaga
+				//verifica
+				//insere ou informa erro
+				
 				// TODO
 			}
+			break;
 //reserva da vaga alterar esquema//
 			}
+			
+			
+			
+			//Pegar carro ou moto
+			
+		
+		
+			
+			
+			
+			
+			
 
 		}
 

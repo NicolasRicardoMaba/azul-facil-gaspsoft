@@ -1,12 +1,29 @@
 package model;
 
 public class Pessoa {
-
+	
 	private String nome;
 	private Long cpf;
 	private Integer idade;
 	private Long telefone;
+	private Carro carro;
+	private Moto moto;
+	
+	public Carro getCarro() {
+		return carro;
+	}
 
+	public void setCarro(Carro carro) {
+		this.carro = carro;
+	}
+
+	public Moto getMoto() {
+		return moto;
+	}
+
+	public void setMoto(Moto moto) {
+		this.moto = moto;
+	}
 	public Integer getIdade() {
 		return idade;
 	}
