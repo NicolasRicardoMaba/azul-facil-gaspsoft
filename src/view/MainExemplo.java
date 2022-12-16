@@ -40,7 +40,8 @@ public class MainExemplo {
 			System.out.println("3 ALTERAR DADOS DO VEICULO");
 			System.out.println("4 EXCLUIR CADASTRO");
 			System.out.println("5 LISTAR CADASTROS");
-			System.out.println("6 RESERVAR VAGA ESTACIONAMENTO");
+			System.out.println("6 LISTAR VEICULOS");
+			System.out.println("7 RESERVAR VAGA ESTACIONAMENTO");
 
 			opcaoSelecionada = Integer.valueOf(leitura.nextLine());
 
@@ -337,6 +338,7 @@ public class MainExemplo {
 				Long cpf = Long.valueOf(leitura.nextLine());
 				
 				bancoPessoa.excluir(p, cpf);
+				bancoVeiculo.excluir(veiculo,cpf);
 			}
 			break;
 			case 5: {
@@ -364,15 +366,10 @@ public class MainExemplo {
 					System.out.println("Placa:"+m.getPlaca());
 					System.out.println("Valvulas:"+m.getQuantcelindradas());
 					System.out.println("Cor:"+m.getCor());
-					
-					if(p.getVagaAssociada() == null) {
-					System.out.println("Vaga:Sem Vaga associada.");
-					}
-					else if (p.getVagaAssociada()!=null) {
-					System.out.println("Sua vaga é:"+p.getVagaAssociada());
-					}
+		}
+				
 				//}
-				else if (veiculo1.getTipo() == "Carro")	{
+				else	{
 					System.out.println("-"+ c.getTipo());
 					System.out.println("Marca:"+c.getMarca());
 					System.out.println("Modelo:"+ c.getModelodocarro());
@@ -381,11 +378,17 @@ public class MainExemplo {
 					System.out.println("Cor:"+c.getCor());
 
 				}
+				if(p.getVagaAssociada() == null) {
+					System.out.println("Vaga:Sem Vaga associada.");
+					}
+					else if (p.getVagaAssociada()!=null) {
+					System.out.println("Sua vaga é:"+p.getVagaAssociada());
+					}
 
 				
 				}
 			}
-			}
+			
 			break;
 			case 7: {
 				System.out.println("**APÓS TER FEITO SEU CADASTRO DIGITE SEU CPF PARA QUE SEJA POSSIVEL RESERVARMOS UMA VAGA:**");

@@ -60,6 +60,17 @@ public class VeiculoDAO implements IVeiculoDAO {
 		//arrumar o retorno
 		
 	}
+	@Override
+	public boolean excluir(Veiculo v, long cpf) {
+		for (Veiculo veiculo : tabelaVeiculo) {
+			if (pessoa.getCpf() == cpf) {
+				tabelaVeiculo.remove(veiculo);
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 
 
