@@ -151,7 +151,6 @@ public class MainExemplo {
 				p = bancoPessoa.getPessoaByCpf(cpf);
 				int index = bancoPessoa.getIndex(p);
 				
-				//bancoPessoa.alterar(p, cpf);
 				
 				System.out.println("- DADOS ATUAIS -");
 				System.out.println("Nome:"+ p.getNome());
@@ -174,28 +173,28 @@ public class MainExemplo {
 					break;
 				}
 				case 1: {
-					System.out.println("Digite o novo nome desejado:");
+					System.out.println("Digite o novo nome:");
 					p.setNome(leitura.nextLine());
 
 					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 2: {
-					System.out.println("Digite o novo cpf desejado:");
+					System.out.println("Digite o novo cpf:");
 					p.setCpf(Long.valueOf(leitura.nextLine()));
 
 					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 3: {
-					System.out.println("Digite o novo nome desejado:");
+					System.out.println("Digite a idade:");
 					p.setIdade(Integer.valueOf(leitura.nextLine()));
 
 					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 4: {
-					System.out.println("Digite o novo nome desejado:");
+					System.out.println("Digite o novo telefone:");
 					p.setTelefone(Long.valueOf(leitura.nextLine()));
 
 					bancoPessoa.getTabelaPessoas().set(index, p);
@@ -214,7 +213,6 @@ public class MainExemplo {
 				p = bancoPessoa.getPessoaByCpf(cpf);
 				int index = bancoPessoa.getIndex(p);
 				
-				//bancoPessoa.alterar(p, cpf);
 				
 			
 				if (veiculo.getTipo().equals("Carro"))		{		

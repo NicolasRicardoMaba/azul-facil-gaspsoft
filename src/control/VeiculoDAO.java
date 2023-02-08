@@ -92,7 +92,14 @@ public class VeiculoDAO implements IVeiculoDAO {
 
 	@Override
 	public boolean alterar(Veiculo v, long cpf) {
-		// TODO Auto-generated method stub
+		
+		for (Veiculo veiculo : tabelaVeiculo) {
+			if (pessoa.getCpf() == cpf) {
+				tabelaVeiculo.set((int) cpf, v);
+				return true;
+			}
+		}
+
 		return false;
 	}
 	

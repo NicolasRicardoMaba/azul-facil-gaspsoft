@@ -100,7 +100,16 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public boolean alterar(Pessoa p, long cpf) {
-		// TODO Auto-generated method stub
+		
+		
+		
+		for (Pessoa pessoa : tabelaPessoas) {
+			if (pessoa.getCpf() == cpf) {
+				tabelaPessoas.set((int) cpf, pessoa);
+				return true;
+			}
+		}
+
 		return false;
 	}
 	
