@@ -19,8 +19,8 @@ public class Veiculo 	{
 		this.ve = ve;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipo(String i) {
+		this.tipo = i;
 	}
 
 	public String getPlaca() {

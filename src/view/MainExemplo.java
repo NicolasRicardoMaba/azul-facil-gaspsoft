@@ -49,6 +49,7 @@ public class MainExemplo {
 			case 0: {
 				break;
 			}
+			//Cadastro Cliente
 			case 1: {
 				Pessoa addPessoa = new Pessoa();
 				addPessoa.setVagaAssociada(null);
@@ -97,7 +98,7 @@ public class MainExemplo {
 
 				System.out.println("/////////////////////////////////////////////");
 	
-
+				//Cadastro veículo do cliente
 				System.out.println("O veículo que usará a vaga é uma moto ou carro?");
 				System.out.println("1=moto");
 				System.out.println("2=carro");
@@ -176,28 +177,30 @@ public class MainExemplo {
 					System.out.println("Digite o novo nome:");
 					p.setNome(leitura.nextLine());
 
-					bancoPessoa.getTabelaPessoas().set(index, p);
+					PessoaDAO.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 2: {
 					System.out.println("Digite o novo cpf:");
 					p.setCpf(Long.valueOf(leitura.nextLine()));
 
-					bancoPessoa.getTabelaPessoas().set(index, p);
+					PessoaDAO.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 3: {
 					System.out.println("Digite a idade:");
 					p.setIdade(Integer.valueOf(leitura.nextLine()));
+					
+					PessoaDAO.getTabelaPessoas().set(index, p);
 
-					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				case 4: {
 					System.out.println("Digite o novo telefone:");
 					p.setTelefone(Long.valueOf(leitura.nextLine()));
+					
+					PessoaDAO.getTabelaPessoas().set(index, p);
 
-					bancoPessoa.getTabelaPessoas().set(index, p);
 				}	
 				break;
 				}
@@ -215,7 +218,7 @@ public class MainExemplo {
 				
 				
 			
-				if (veiculo.getTipo().equals("Carro"))		{		
+				if (veiculo.getTipo() == "Carro") {		
 					
 					System.out.println("- DADOS DO VEICULO -");
 				System.out.println("-"+ c.getTipo());
@@ -244,28 +247,28 @@ public class MainExemplo {
 					System.out.println("PARA QUAL MARCA DESEJA ALTERAR?");
 					c.setMarca(leitura.nextLine());
 	
-					bancoVeiculo.getTabelaVeiculo().set(index, c);
+					VeiculoDAO.getTabelaVeiculo().set(index, c);
 				}	
 				break;
 				case 2: {
 					System.out.println("PARA QUAL MODELO DESEJA ALTERAR?");
 				c.setModelodocarro(leitura.nextLine());
 
-					bancoVeiculo.getTabelaVeiculo().set(index, c);
+					VeiculoDAO.getTabelaVeiculo().set(index, c);
 				}	
 				break;
 				case 3: {
 					System.out.println("PARA QUANTAS VALVULAS DESEJA ALTERAR?");
 					c.setQuantvalvulas(Integer.valueOf(leitura.nextLine()));
 
-					bancoVeiculo.getTabelaVeiculo().set(index, c);
+					VeiculoDAO.getTabelaVeiculo().set(index, c);
 				}	
 				break;
 				case 4: {
 					System.out.println("PARA QUAL COR DESEJA ALTERAR?");
 					c.setCor(leitura.nextLine());
 
-					bancoVeiculo.getTabelaVeiculo().set(index, c);
+					VeiculoDAO.getTabelaVeiculo().set(index, c);
 				}	
 				break;
 				}
@@ -299,7 +302,7 @@ public class MainExemplo {
 				System.out.println("PARA QUAL MARCA DESEJA ALTERAR?");
 				m.setMarca(leitura.nextLine());
 
-				bancoVeiculo.getTabelaVeiculo().set(index, m);
+				VeiculoDAO.getTabelaVeiculo().set(index, m);
 			}	
 			break;
 			case 2: {
@@ -307,21 +310,21 @@ public class MainExemplo {
 				c.setModelodocarro
 				(leitura.nextLine());
 
-				bancoVeiculo.getTabelaVeiculo().set(index, m);
+				VeiculoDAO.getTabelaVeiculo().set(index, m);
 			}	
 			break;
 			case 3: {
 				System.out.println("PARA QUANTAS VALVULAS DESEJA ALTERAR?");
 				p.getMoto().setQuantcelindradas(Integer.valueOf(leitura.nextLine()));
 
-				bancoVeiculo.getTabelaVeiculo().set(index, m);
+				VeiculoDAO.getTabelaVeiculo().set(index, m);
 			}	
 			break;
 			case 4: {
 				System.out.println("PARA QUAL COR DESEJA ALTERAR?");
 				p.getMoto().setCor(leitura.nextLine());
 
-				bancoVeiculo.getTabelaVeiculo().set(index, m);
+				VeiculoDAO.getTabelaVeiculo().set(index, m);
 			}	
 			break;
 			}
